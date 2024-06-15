@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import Header from "../components/MainPage/Header";
 import OptionButton from "../components/MainPage/OptionButton";
+import Product from "../components/MainPage/Product";
 import { optionList } from "../constants/mainPage";
 
 const MainPage = () => {
@@ -12,6 +13,11 @@ const MainPage = () => {
           <OptionButton key={id} buttonText={buttonText} />
         ))}
       </OptionButtonList>
+      <ProductList>
+        <Product />
+        <Product />
+        <Product />
+      </ProductList>
     </Wrapper>
   );
 };
@@ -32,4 +38,11 @@ const OptionButtonList = styled.section`
 
   display: flex;
   column-gap: 1rem;
+`;
+
+const ProductList = styled.section`
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
 `;
