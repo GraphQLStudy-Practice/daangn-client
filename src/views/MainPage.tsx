@@ -1,9 +1,10 @@
 import styled from "@emotion/styled";
+import Header from "../components/MainPage/Header";
 
 const MainPage = () => {
   return (
     <Wrapper>
-      <Text>MainPage</Text>
+      <Header />
     </Wrapper>
   );
 };
@@ -14,8 +15,4 @@ const Wrapper = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
-`;
-
-const Text = styled.p`
-  color: blue;
 `;
