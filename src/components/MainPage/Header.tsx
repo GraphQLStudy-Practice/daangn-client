@@ -27,7 +27,6 @@ const HeaderWrapper = styled.header`
 
   width: 100%;
   height: 3rem;
-  padding: 0 1rem;
 `;
 
 const HeaderLeftSection = styled.section`

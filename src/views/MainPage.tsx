@@ -13,6 +13,8 @@ export default MainPage;
 
 const Wrapper = styled.section`
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+
+  padding: 0 0.5rem;
 `;
