@@ -4,6 +4,7 @@ import BottomNav from "../components/MainPage/BottomNav";
 import Header from "../components/MainPage/Header";
 import OptionButton from "../components/MainPage/OptionButton";
 import Product from "../components/MainPage/Product";
+import WriteButton from "../components/MainPage/WriteButton";
 import { optionList } from "../constants/mainPage";
 
 const client = new ApolloClient({
@@ -49,6 +50,7 @@ const MainPage = () => {
         <Product />
         <Product />
       </ProductList>
+      <WriteButton />
       <BottomNav />
     </Wrapper>
   );
