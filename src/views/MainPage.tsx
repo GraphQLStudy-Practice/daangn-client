@@ -1,4 +1,4 @@
-import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
+import { gql, useQuery } from "@apollo/client";
 import styled from "@emotion/styled";
 import BottomNav from "../components/MainPage/BottomNav";
 import Header from "../components/MainPage/Header";
@@ -7,36 +7,25 @@ import Product from "../components/MainPage/Product";
 import WriteButton from "../components/MainPage/WriteButton";
 import { optionList } from "../constants/mainPage";
 
-const client = new ApolloClient({
-  uri: "http://3.39.54.196:8080/graphql",
-  cache: new InMemoryCache(),
-});
-
-const GET_PRODUCTS = gql`
-  query Products {
-    products {
-      id
-      title
-      imageUrl
-      price
-      location
-      uploadDate
-    }
-  }
-`;
-
-client
-  .query({
-    query: GET_PRODUCTS,
-  })
-  .then((response) => {
-    console.log(response.data);
-  })
-  .catch((error) => {
-    console.error("Error fetching data: ", error);
-  });
-
 const MainPage = () => {
+  const GET_PRODUCTS = gql`
+    query Products {
+      products {
+        id
+        title
+        imageUrl
+        price
+        location
+        uploadDate
+      }
+    }
+  `;
+
+  const { loading, error, data } = useQuery(GET_PRODUCTS);
+
+  if (loading) return <p>Loading</p>;
+  if (error) return <p>Error</p>;
+
   return (
     <Wrapper>
       <Header />
@@ -46,9 +35,9 @@ const MainPage = () => {
         ))}
       </OptionButtonList>
       <ProductList>
-        <Product />
-        <Product />
-        <Product />
+        {data.products.map((product) => (
+          <Product key={product.id} {...product} />
+        ))}
       </ProductList>
       <WriteButton />
       <BottomNav />

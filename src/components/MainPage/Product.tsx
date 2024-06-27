@@ -1,15 +1,22 @@
 import styled from "@emotion/styled";
 import IcMenu from "../../assets/ic_menu.svg?react";
 
-function Product() {
+interface ProductProps {
+  imageUrl: string;
+  location: string;
+  price: number;
+  title: string;
+}
+
+function Product({ imageUrl, location, price, title }: ProductProps) {
   return (
     <ProductWrapper>
       <StyledIcMenu />
-      <ProductImg />
+      <ProductImg src={imageUrl} />
       <ProductInfoContainer>
-        <ProductTitle>애플 라이트닝 이어폰 젠더 정품팝니다.</ProductTitle>
-        <ProductSubInfo>금천구 가산동•3분 전</ProductSubInfo>
-        <ProductPrice>8,000원</ProductPrice>
+        <ProductTitle>{title}</ProductTitle>
+        <ProductLocationInfo>{location}</ProductLocationInfo>
+        <ProductPrice>{`${price}원`}</ProductPrice>
       </ProductInfoContainer>
     </ProductWrapper>
   );
@@ -50,7 +57,7 @@ const ProductTitle = styled.h2`
   font-weight: 400;
 `;
 
-const ProductSubInfo = styled.p`
+const ProductLocationInfo = styled.p`
   margin: 0;
   padding-top: 0.3rem;
 
