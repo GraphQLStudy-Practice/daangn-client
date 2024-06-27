@@ -1,8 +1,49 @@
+import { gql, useMutation } from "@apollo/client";
 import styled from "@emotion/styled";
+import { useState } from "react";
 
 const AddPage = () => {
+  const [values, setValues] = useState({
+    title: "",
+    imageUrl:
+      "https://mblogthumb-phinf.pstatic.net/MjAyMjAzMjBfMjk3/MDAxNjQ3NzgwNzU0MTE5.OOQRa6ZEvKpt-Y7nuzGSeq8Qyt6Z5zxTbWDA3U-24kYg.-Q_K1W9UiCn5rn37PlPwZlgwm2jmbduqRnXO2CrKuA0g.JPEG.swishswalla/IMG_5927.JPG?type=w800",
+    price: 0,
+    location: "",
+  });
+
+  const ADD_PRODUCT = gql`
+    mutation AddProduct(
+      $title: String
+      $imageUrl: String
+      $price: Int
+      $location: String
+    ) {
+      addProduct(
+        title: $title
+        imageUrl: $imageUrl
+        price: $price
+        location: $location
+      ) {
+        id
+        title
+        imageUrl
+        price
+        location
+        uploadDate
+      }
+    }
+  `;
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    mutationFn({ variables: values });
+    console.log(data);
+  };
+
+  const [mutationFn, { loading, data, error }] = useMutation(ADD_PRODUCT);
+
   return (
-    <Wrapper>
+    <Wrapper onSubmit={handleSubmit}>
       <Header>
         <CloseBtn>
           <img src="src/assets/icon_close.svg" />
@@ -13,7 +54,10 @@ const AddPage = () => {
       <ImgBtn type="file" />
       <InputWrapper>
         <Label>제목</Label>
-        <Input placeholder="제목" />
+        <Input
+          placeholder="제목"
+          onChange={(e) => setValues({ ...values, title: e.target.value })}
+        />
       </InputWrapper>
       <InputWrapper>
         <Label>거래 방식</Label>
@@ -25,7 +69,10 @@ const AddPage = () => {
         </RadioWrapper>
       </InputWrapper>
       <InputWrapper>
-        <Input placeholder="&#8361; 가격을 입력해주세요." />
+        <Input
+          placeholder="&#8361; 가격을 입력해주세요."
+          onChange={(e) => setValues({ ...values, price: +e.target.value })}
+        />
         <CheckWrapper>
           <CheckInput type="checkbox" id="가격제안받기" />
           <CheckLabel htmlFor="가격제안받기">가격 제안 받기</CheckLabel>
@@ -34,20 +81,18 @@ const AddPage = () => {
       <InputWrapper>
         <Label>자세한 설명</Label>
         <TextArea
-          placeholder={`철산동에 올릴 게시글 내용을 작성해 주세요. (판매 금지 물품은 게시가 제한될 수 있어요.) 
-
- 
-신뢰할 수 있는 거래를 위해 자세히 적어주세요.
-과학기술정보통신부, 한국 인터넷진흥원과 함께 
-해요.`}
+          placeholder={`철산동에 올릴 게시글 내용을 작성해 주세요. (판매 금지 물품은 게시가 제한될 수 있어요.)\n\n신뢰할 수 있는 거래를 위해 자세히 적어주세요. 과학기술정보통신부, 한국 인터넷진흥원과 함께 해요.`}
         />
       </InputWrapper>
       <InputWrapper>
         <Label>거래 희망 장소</Label>
-        <Input placeholder="위치 추가" />
+        <Input
+          placeholder="위치 추가"
+          onChange={(e) => setValues({ ...values, location: e.target.value })}
+        />
       </InputWrapper>
       <Footer>
-        <Button type="button">작성 완료</Button>
+        <Button type="submit">작성 완료</Button>
       </Footer>
     </Wrapper>
   );
@@ -55,7 +100,7 @@ const AddPage = () => {
 
 export default AddPage;
 
-const Wrapper = styled.section`
+const Wrapper = styled.form`
   display: flex;
   flex-direction: column;
   gap: 25px;
@@ -182,4 +227,5 @@ const Button = styled.button`
   border-radius: 8px;
   border: none;
   color: white;
+  cursor: pointer;
 `;
