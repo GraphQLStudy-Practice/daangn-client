@@ -17,6 +17,7 @@ export default BottomNav;
 const BottomNavWrapper = styled.section`
   position: fixed;
   bottom: 0;
+  z-index: 1;
 
   display: flex;
   justify-content: space-around;
@@ -25,4 +26,5 @@ const BottomNavWrapper = styled.section`
   height: 3.5rem;
 
   border-top: 1px solid black;
+  background-color: white;
 `;

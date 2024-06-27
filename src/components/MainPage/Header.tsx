@@ -21,12 +21,18 @@ function Header() {
 export default Header;
 
 const HeaderWrapper = styled.header`
+  position: fixed;
+  top: 0;
+  z-index: 1;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
 
   width: 100%;
   height: 3rem;
+
+  background-color: white;
 `;
 
 const HeaderLeftSection = styled.section`
@@ -34,6 +40,7 @@ const HeaderLeftSection = styled.section`
   align-items: center;
   column-gap: 0.3rem;
 
+  margin-left: 0.5rem;
   height: 100%;
 `;
 
@@ -54,6 +61,7 @@ const HeaderRightSection = styled.section`
   column-gap: 1.2rem;
 
   height: 100%;
+  margin-right: 0.5rem;
 `;
 
 const StyledIcSearch = styled(IcSearch)`

@@ -16,7 +16,7 @@ function Product({ imageUrl, location, price, title }: ProductProps) {
       <ProductInfoContainer>
         <ProductTitle>{title}</ProductTitle>
         <ProductLocationInfo>{location}</ProductLocationInfo>
-        <ProductPrice>{`${price}원`}</ProductPrice>
+        <ProductPrice>{`${price.toLocaleString()}원`}</ProductPrice>
       </ProductInfoContainer>
     </ProductWrapper>
   );
@@ -33,8 +33,6 @@ const ProductWrapper = styled.div`
   width: 100%;
   height: 5.8rem;
   padding: 0.8rem 0;
-
-  border: 1px solid black;
 `;
 
 const ProductImg = styled.img`

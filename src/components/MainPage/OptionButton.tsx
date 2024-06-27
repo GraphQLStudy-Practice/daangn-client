@@ -17,6 +17,6 @@ const OptionButtonWrapper = styled.div`
 
   font-size: 0.8rem;
 
-  border: 1px solid red;
+  border: 1px solid black;
   border-radius: 0.5rem;
 `;

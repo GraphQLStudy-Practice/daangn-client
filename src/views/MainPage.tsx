@@ -29,17 +29,19 @@ const MainPage = () => {
   return (
     <Wrapper>
       <Header />
-      <OptionButtonList>
-        {optionList.map(({ id, buttonText }) => (
-          <OptionButton key={id} buttonText={buttonText} />
-        ))}
-      </OptionButtonList>
-      <ProductList>
-        {data.products.map((product) => (
-          <Product key={product.id} {...product} />
-        ))}
-      </ProductList>
-      <WriteButton />
+      <PageBody>
+        <OptionButtonList>
+          {optionList.map(({ id, buttonText }) => (
+            <OptionButton key={id} buttonText={buttonText} />
+          ))}
+        </OptionButtonList>
+        <ProductList>
+          {data.products.map((product) => (
+            <Product key={product.id} {...product} />
+          ))}
+        </ProductList>
+        <WriteButton />
+      </PageBody>
       <BottomNav />
     </Wrapper>
   );
@@ -68,4 +70,13 @@ const ProductList = styled.section`
 
   display: flex;
   flex-direction: column;
+
+  & > * + * {
+    border-top: 1px solid #d1d3d8;
+  }
+`;
+
+const PageBody = styled.main`
+  width: 100%;
+  padding: 3rem 0 3.5rem 0;
 `;
