@@ -2,6 +2,7 @@ import { gql, useMutation } from "@apollo/client";
 import styled from "@emotion/styled";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { GET_PRODUCTS } from "../apis/\bqueries";
 
 const AddPage = () => {
   const [values, setValues] = useState({
@@ -42,7 +43,9 @@ const AddPage = () => {
     navigate("/");
   };
 
-  const [mutationFn, { loading, data, error }] = useMutation(ADD_PRODUCT);
+  const [mutationFn, { loading, data, error }] = useMutation(ADD_PRODUCT, {
+    refetchQueries: [{ query: GET_PRODUCTS }],
+  });
 
   return (
     <Wrapper onSubmit={handleSubmit}>

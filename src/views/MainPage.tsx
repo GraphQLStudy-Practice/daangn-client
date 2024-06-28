@@ -1,5 +1,6 @@
-import { gql, useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import styled from "@emotion/styled";
+import { GET_PRODUCTS } from "../apis/\bqueries";
 import BottomNav from "../components/MainPage/BottomNav";
 import Header from "../components/MainPage/Header";
 import OptionButton from "../components/MainPage/OptionButton";
@@ -8,23 +9,12 @@ import WriteButton from "../components/MainPage/WriteButton";
 import { optionList } from "../constants/mainPage";
 
 const MainPage = () => {
-  const GET_PRODUCTS = gql`
-    query Products {
-      products {
-        id
-        title
-        imageUrl
-        price
-        location
-        uploadDate
-      }
-    }
-  `;
-
   const { loading, error, data } = useQuery(GET_PRODUCTS);
 
   if (loading) return <p>Loading</p>;
   if (error) return <p>Error</p>;
+
+  console.log(data);
 
   return (
     <Wrapper>
