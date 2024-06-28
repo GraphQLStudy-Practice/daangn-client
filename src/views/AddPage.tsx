@@ -1,6 +1,7 @@
 import { gql, useMutation } from "@apollo/client";
 import styled from "@emotion/styled";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const AddPage = () => {
   const [values, setValues] = useState({
@@ -34,10 +35,11 @@ const AddPage = () => {
     }
   `;
 
+  const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
     mutationFn({ variables: values });
-    console.log(data);
+    navigate("/");
   };
 
   const [mutationFn, { loading, data, error }] = useMutation(ADD_PRODUCT);
