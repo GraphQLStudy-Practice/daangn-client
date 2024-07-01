@@ -1,7 +1,8 @@
+import { RelayEnvironmentProvider } from "react-relay";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import MainPage from "./views/MainPage";
+import environment from "./RelayEnvironment";
 import AddPage from "./views/AddPage";
-import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
+import MainPage from "./views/MainPage";
 
 function App() {
   const router = createBrowserRouter([
@@ -9,15 +10,17 @@ function App() {
     { path: "/add", element: <AddPage /> },
   ]);
 
-  const client = new ApolloClient({
-    uri: "http://3.39.54.196:8080/graphql",
-    cache: new InMemoryCache(),
-  });
+  // const client = new ApolloClient({
+  //   uri: "http://3.39.54.196:8080/graphql",
+  //   cache: new InMemoryCache(),
+  // });
 
   return (
-    <ApolloProvider client={client}>
+    // <ApolloProvider client={client}>
+    <RelayEnvironmentProvider environment={environment}>
       <RouterProvider router={router} />
-    </ApolloProvider>
+    </RelayEnvironmentProvider>
+    // </ApolloProvider>
   );
 }
 
