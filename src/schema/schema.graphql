@@ -1,0 +1,22 @@
+type Product {
+  id: ID!
+  title: String!
+  imageUrl: String
+  price: Float!
+  location: String!
+  uploadDate: String!
+}
+
+type Query {
+  products: [Product]
+}
+
+type Mutation {
+  addProduct(
+    title: String
+    imageUrl: String
+    price: Int
+    location: String
+    content: String
+  ): Product
+}
