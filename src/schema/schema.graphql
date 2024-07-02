@@ -12,13 +12,11 @@ type Query {
 }
 
 type Mutation {
-  addProduct(input: AddProductInput!): Product
-}
-
-input AddProductInput {
-  title: String!
-  imageUrl: String
-  price: Float!
-  location: String!
-  uploadDate: String!
+  addProduct(
+    title: String
+    imageUrl: String
+    price: Int
+    location: String
+    content: String
+  ): Product
 }

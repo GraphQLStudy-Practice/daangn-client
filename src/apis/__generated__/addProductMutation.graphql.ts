@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<70254d6fd41ad4b775c7f0b546b12736>>
+ * @generated SignedSource<<5d4418055c217cd177e2e7600ce31efd>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -9,15 +9,11 @@
 // @ts-nocheck
 
 import { ConcreteRequest, Mutation } from 'relay-runtime';
-export type AddProductInput = {
-  imageUrl?: string | null | undefined;
-  location: string;
-  price: number;
-  title: string;
-  uploadDate: string;
-};
 export type addProductMutation$variables = {
-  input: AddProductInput;
+  imageUrl?: string | null | undefined;
+  location?: string | null | undefined;
+  price?: number | null | undefined;
+  title?: string | null | undefined;
 };
 export type addProductMutation$data = {
   readonly addProduct: {
@@ -35,21 +31,49 @@ export type addProductMutation = {
 };
 
 const node: ConcreteRequest = (function(){
-var v0 = [
-  {
-    "defaultValue": null,
-    "kind": "LocalArgument",
-    "name": "input"
-  }
-],
-v1 = [
+var v0 = {
+  "defaultValue": null,
+  "kind": "LocalArgument",
+  "name": "imageUrl"
+},
+v1 = {
+  "defaultValue": null,
+  "kind": "LocalArgument",
+  "name": "location"
+},
+v2 = {
+  "defaultValue": null,
+  "kind": "LocalArgument",
+  "name": "price"
+},
+v3 = {
+  "defaultValue": null,
+  "kind": "LocalArgument",
+  "name": "title"
+},
+v4 = [
   {
     "alias": null,
     "args": [
       {
         "kind": "Variable",
-        "name": "input",
-        "variableName": "input"
+        "name": "imageUrl",
+        "variableName": "imageUrl"
+      },
+      {
+        "kind": "Variable",
+        "name": "location",
+        "variableName": "location"
+      },
+      {
+        "kind": "Variable",
+        "name": "price",
+        "variableName": "price"
+      },
+      {
+        "kind": "Variable",
+        "name": "title",
+        "variableName": "title"
       }
     ],
     "concreteType": "Product",
@@ -105,32 +129,42 @@ v1 = [
 ];
 return {
   "fragment": {
-    "argumentDefinitions": (v0/*: any*/),
+    "argumentDefinitions": [
+      (v0/*: any*/),
+      (v1/*: any*/),
+      (v2/*: any*/),
+      (v3/*: any*/)
+    ],
     "kind": "Fragment",
     "metadata": null,
     "name": "addProductMutation",
-    "selections": (v1/*: any*/),
+    "selections": (v4/*: any*/),
     "type": "Mutation",
     "abstractKey": null
   },
   "kind": "Request",
   "operation": {
-    "argumentDefinitions": (v0/*: any*/),
+    "argumentDefinitions": [
+      (v3/*: any*/),
+      (v0/*: any*/),
+      (v2/*: any*/),
+      (v1/*: any*/)
+    ],
     "kind": "Operation",
     "name": "addProductMutation",
-    "selections": (v1/*: any*/)
+    "selections": (v4/*: any*/)
   },
   "params": {
-    "cacheID": "8e636176ce4ba0397f6479a8737c2754",
+    "cacheID": "daf986f8d20d956ed54029de3a0e50f9",
     "id": null,
     "metadata": {},
     "name": "addProductMutation",
     "operationKind": "mutation",
-    "text": "mutation addProductMutation(\n  $input: AddProductInput!\n) {\n  addProduct(input: $input) {\n    id\n    title\n    imageUrl\n    price\n    location\n    uploadDate\n  }\n}\n"
+    "text": "mutation addProductMutation(\n  $title: String\n  $imageUrl: String\n  $price: Int\n  $location: String\n) {\n  addProduct(title: $title, imageUrl: $imageUrl, price: $price, location: $location) {\n    id\n    title\n    imageUrl\n    price\n    location\n    uploadDate\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "cfb4ebffc42f270d55ef62669b5e695d";
+(node as any).hash = "55426e231f71fd468e9e969264799c97";
 
 export default node;

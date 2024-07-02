@@ -1,8 +1,8 @@
-import { gql, useMutation } from "@apollo/client";
 import styled from "@emotion/styled";
 import { useState } from "react";
+import { useMutation } from "react-relay";
 import { useNavigate } from "react-router-dom";
-import { GET_PRODUCTS } from "../apis/\bqueries";
+import addProduct from "../apis/addProduct";
 
 const AddPage = () => {
   const [values, setValues] = useState({
@@ -13,39 +13,23 @@ const AddPage = () => {
     location: "",
   });
 
-  const ADD_PRODUCT = gql`
-    mutation AddProduct(
-      $title: String
-      $imageUrl: String
-      $price: Int
-      $location: String
-    ) {
-      addProduct(
-        title: $title
-        imageUrl: $imageUrl
-        price: $price
-        location: $location
-      ) {
-        id
-        title
-        imageUrl
-        price
-        location
-        uploadDate
-      }
-    }
-  `;
+  const [commitAddProduct] = useMutation(addProduct);
 
   const navigate = useNavigate();
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    mutationFn({ variables: values });
-    navigate("/");
-  };
 
-  const [mutationFn, { loading, data, error }] = useMutation(ADD_PRODUCT, {
-    refetchQueries: [{ query: GET_PRODUCTS }],
-  });
+    commitAddProduct({
+      variables: { ...values },
+      onCompleted: () => {
+        navigate("/");
+      },
+      onError: (e) => {
+        console.log(e);
+      },
+    });
+  };
 
   return (
     <Wrapper onSubmit={handleSubmit}>

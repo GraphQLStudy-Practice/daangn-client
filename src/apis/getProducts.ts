@@ -8,7 +8,6 @@ const getProducts = graphql`
       imageUrl
       price
       location
-      uploadDate
     }
   }
 `;

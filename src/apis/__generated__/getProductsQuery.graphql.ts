@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<8f268447553dd806775e9844b3f87a5b>>
+ * @generated SignedSource<<73bd2aca3c883fb7c2377abe4d0f6e4c>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -17,7 +17,6 @@ export type getProductsQuery$data = {
     readonly location: string;
     readonly price: number;
     readonly title: string;
-    readonly uploadDate: string;
   } | null | undefined> | null | undefined;
 };
 export type getProductsQuery = {
@@ -69,13 +68,6 @@ var v0 = [
         "kind": "ScalarField",
         "name": "location",
         "storageKey": null
-      },
-      {
-        "alias": null,
-        "args": null,
-        "kind": "ScalarField",
-        "name": "uploadDate",
-        "storageKey": null
       }
     ],
     "storageKey": null
@@ -99,16 +91,16 @@ return {
     "selections": (v0/*: any*/)
   },
   "params": {
-    "cacheID": "4e9988528d01d07bb4bd132dbeee6232",
+    "cacheID": "28694e68aa841d3f73c5fe014848c2cd",
     "id": null,
     "metadata": {},
     "name": "getProductsQuery",
     "operationKind": "query",
-    "text": "query getProductsQuery {\n  products {\n    id\n    title\n    imageUrl\n    price\n    location\n    uploadDate\n  }\n}\n"
+    "text": "query getProductsQuery {\n  products {\n    id\n    title\n    imageUrl\n    price\n    location\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "15824b391b16de628a48c34078c52ec0";
+(node as any).hash = "35a60a561a1e2aa092e6b2350233f965";
 
 export default node;

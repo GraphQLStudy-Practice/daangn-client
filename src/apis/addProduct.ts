@@ -1,8 +1,18 @@
 import { graphql } from "react-relay";
 
 const addProduct = graphql`
-  mutation addProductMutation($input: AddProductInput!) {
-    addProduct(input: $input) {
+  mutation addProductMutation(
+    $title: String
+    $imageUrl: String
+    $price: Int
+    $location: String
+  ) {
+    addProduct(
+      title: $title
+      imageUrl: $imageUrl
+      price: $price
+      location: $location
+    ) {
       id
       title
       imageUrl

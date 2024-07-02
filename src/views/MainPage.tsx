@@ -1,6 +1,6 @@
-import { useQuery } from "@apollo/client";
 import styled from "@emotion/styled";
-import { GET_PRODUCTS } from "../apis/\bqueries";
+import { useLazyLoadQuery } from "react-relay";
+import getProductsQuery from "../apis/getProducts";
 import BottomNav from "../components/MainPage/BottomNav";
 import Header from "../components/MainPage/Header";
 import OptionButton from "../components/MainPage/OptionButton";
@@ -9,10 +9,7 @@ import WriteButton from "../components/MainPage/WriteButton";
 import { optionList } from "../constants/mainPage";
 
 const MainPage = () => {
-  const { loading, error, data } = useQuery(GET_PRODUCTS);
-
-  if (loading) return <p>Loading</p>;
-  if (error) return <p>Error</p>;
+  const data = useLazyLoadQuery(getProductsQuery, {});
 
   console.log(data);
 

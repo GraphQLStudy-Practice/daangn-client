@@ -10,17 +10,10 @@ function App() {
     { path: "/add", element: <AddPage /> },
   ]);
 
-  // const client = new ApolloClient({
-  //   uri: "http://3.39.54.196:8080/graphql",
-  //   cache: new InMemoryCache(),
-  // });
-
   return (
-    // <ApolloProvider client={client}>
     <RelayEnvironmentProvider environment={environment}>
       <RouterProvider router={router} />
     </RelayEnvironmentProvider>
-    // </ApolloProvider>
   );
 }
 
